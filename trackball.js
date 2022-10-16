@@ -10,7 +10,7 @@ var colors = [];
 var changeColor;
 var rotationMatrix;
 var rotationMatrixLoc;
-
+var rotateAxis=false;
 var angle = 0.0;
 var axis = vec3(0, 0, 1);
 
@@ -112,21 +112,24 @@ function initColorChange(gl, canvas, color) {
 
   rotationMatrix = mat4();
   rotationMatrixLoc = gl.getUniformLocation(program, "uRotationMatrix");
-  gl.uniformMatrix4fv(rotationMatrixLoc, false, flatten(rotationMatrix));
+  gl.uniformMatrix4fv(rotationMatrixLoc, true, flatten(rotationMatrix));
 
   canvas.addEventListener("mousedown", function (event) {
+    rotateAxis=false
     var x = (3 * event.clientX) / canvas.width - 1;
     var y = (3 * (canvas.height - event.clientY)) / canvas.height - 1;
     startMotion(x, y);
   });
 
   canvas.addEventListener("mouseup", function (event) {
+    rotateAxis=false
     var x = (3 * event.clientX) / canvas.width - 1;
     var y = (3 * (canvas.height - event.clientY)) / canvas.height - 1;
     stopMotion(x, y);
   });
 
   canvas.addEventListener("mousemove", function (event) {
+    // rotateAxis=false
     var x = (3 * event.clientX) / canvas.width - 1;
     var y = (3 * (canvas.height - event.clientY)) / canvas.height - 1;
     mouseMotion(x, y);
@@ -138,6 +141,30 @@ function initColorChange(gl, canvas, color) {
 window.onload = function init() {
   canvas = document.getElementById("gl-canvas");
   var buttonColor = document.getElementById("buttonColor");
+  var rotateX = document.getElementById("rotateX");
+  rotateX.onclick=function()
+  {
+    axis=vec3(1,0,0)
+    rotateAxis=true;
+    angle=1
+    rotationMatrix = mat4();
+  }
+  var rotateY = document.getElementById("rotateY");
+  rotateY.onclick=function()
+  {
+    axis=vec3(0,1,0)
+    rotateAxis=true;
+    angle=1
+    rotationMatrix = mat4();
+  }
+  var rotateZ = document.getElementById("rotateZ");
+  rotateZ.onclick=function()
+  {
+    axis=vec3(0.577350,0.577350,0.577350)
+    rotateAxis=true;
+    angle=0.005
+    rotationMatrix = mat4();
+  }
   var body = document.getElementById("body");
 
   var bgColor = 1;
@@ -189,7 +216,7 @@ function quad(a, b, c, d, changeColor) {
   ];
 
   var vertexColors = [
-    vec4(0.0, 0.0, 0.0, 1.0), // black
+    vec4(1.0, 0.5, 0.5, 1.0), //
     vec4(1.0, 0.0, 0.0, 1.0), // red
     vec4(1.0, 1.0, 0.0, 1.0), // yellow
     vec4(0.0, 1.0, 0.0, 1.0), // green
@@ -224,6 +251,11 @@ function render() {
   if (trackballMove) {
     axis = normalize(axis);
     rotationMatrix = mult(rotationMatrix, rotate(angle, axis));
+    gl.uniformMatrix4fv(rotationMatrixLoc, true, flatten(rotationMatrix));
+  }
+  if(rotateAxis)
+  {
+     rotationMatrix = mult(rotationMatrix, rotate(angle, axis));
     gl.uniformMatrix4fv(rotationMatrixLoc, false, flatten(rotationMatrix));
   }
   gl.drawArrays(gl.TRIANGLES, 0, numPositions);

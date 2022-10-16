@@ -49,7 +49,7 @@ function mouseMotion(x, y) {
     dz = curPos[2] - lastPos[2];
 
     if (dx || dy || dz) {
-      angle = -0.1 * Math.sqrt(dx * dx + dy * dy + dz * dz);
+      angle = -0.9 * Math.sqrt(dx * dx + dy * dy + dz * dz);
 
       axis[0] = lastPos[1] * curPos[2] - lastPos[2] * curPos[1];
       axis[1] = lastPos[2] * curPos[0] - lastPos[0] * curPos[2];
@@ -82,9 +82,9 @@ function stopMotion(x, y) {
     trackballMove = false;
   }
 }
-function initColorChange(gl, canvas) {
+function initColorChange(gl, canvas, color) {
   gl.viewport(0, 0, canvas.width, canvas.height);
-  gl.clearColor(1.0, 1.0, 1.0, 1.0);
+  gl.clearColor(color, color, color, 1.0);
 
   gl.enable(gl.DEPTH_TEST);
 
@@ -115,20 +115,20 @@ function initColorChange(gl, canvas) {
   gl.uniformMatrix4fv(rotationMatrixLoc, false, flatten(rotationMatrix));
 
   canvas.addEventListener("mousedown", function (event) {
-    var x = (2 * event.clientX) / canvas.width - 1;
-    var y = (2 * (canvas.height - event.clientY)) / canvas.height - 1;
+    var x = (3 * event.clientX) / canvas.width - 1;
+    var y = (3 * (canvas.height - event.clientY)) / canvas.height - 1;
     startMotion(x, y);
   });
 
   canvas.addEventListener("mouseup", function (event) {
-    var x = (2 * event.clientX) / canvas.width - 1;
-    var y = (2 * (canvas.height - event.clientY)) / canvas.height - 1;
+    var x = (3 * event.clientX) / canvas.width - 1;
+    var y = (3 * (canvas.height - event.clientY)) / canvas.height - 1;
     stopMotion(x, y);
   });
 
   canvas.addEventListener("mousemove", function (event) {
-    var x = (2 * event.clientX) / canvas.width - 1;
-    var y = (2 * (canvas.height - event.clientY)) / canvas.height - 1;
+    var x = (3 * event.clientX) / canvas.width - 1;
+    var y = (3 * (canvas.height - event.clientY)) / canvas.height - 1;
     mouseMotion(x, y);
   });
 
@@ -138,22 +138,33 @@ function initColorChange(gl, canvas) {
 window.onload = function init() {
   canvas = document.getElementById("gl-canvas");
   var buttonColor = document.getElementById("buttonColor");
+  var body = document.getElementById("body");
+
+  var bgColor = 1;
   changeColor = JSON.parse(buttonColor.value);
   gl = canvas.getContext("webgl2");
   if (!gl) {
     alert("WebGL 2.0 isn't available");
   }
-  buttonColor.onclick=function(){
+  buttonColor.onclick = function () {
     changeColor = !JSON.parse(buttonColor.value);
     buttonColor.value = changeColor;
     positions = [];
     colors = [];
+    if (changeColor) {
+      bgColor = 0;
+      body.style.backgroundColor = "black";
+    } else {
+      bgColor = 1;
+      body.style.backgroundColor = "white";
+    }
     colorCube(changeColor);
-    initColorChange(gl, canvas);
+    initColorChange(gl, canvas, bgColor);
   };
+
   colorCube(changeColor);
 
-  initColorChange(gl, canvas);
+  initColorChange(gl, canvas, bgColor);
 };
 
 function colorCube(changeColor) {

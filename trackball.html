@@ -1,5 +1,8 @@
-<html class=" jkfwctcl idc0_343"><head><script id="vertex-shader" type="x-shader/x-vertex">
-    #version 300 es
+<html class=" jkfwctcl idc0_343">
+
+<head>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        #version 300 es
     
     in  vec4 aPosition;
     in  vec4 aColor;
@@ -15,10 +18,10 @@
       vColor = aColor;
     }
     </script>
-    
-    
+
+
     <script id="fragment-shader" type="x-shader/x-fragment">
-    #version 300 es
+        #version 300 es
     
     precision mediump float;
     
@@ -31,18 +34,24 @@
         fColor = vColor;
     }
     </script>
-    
+
     <script type="text/javascript" src="../Common/initShaders.js"></script>
     <script type="text/javascript" src="../Common/MVnew.js"></script>
     <script type="text/javascript" src="trackball.js"></script>
-    
-    </head><body data-new-gr-c-s-check-loaded="14.1083.0" data-gr-ext-installed="" cz-shortcut-listen="true">
-    <canvas id="gl-canvas" width="512" "="" height="512">
-    Oops ... your browser doesn't support the HTML5 canvas element
+
+</head>
+
+<body id="body" style="background-color: white;" data-new-gr-c-s-check-loaded="14.1083.0" data-gr-ext-installed=""
+    cz-shortcut-listen="true">
+    <canvas id="gl-canvas" width="1024" height="512">
+        Oops ... your browser doesn't support the HTML5 canvas element
     </canvas>
-    
+
     <br>
     <button id="buttonColor" value="false">Change Color</button>
-    
-    
-    </body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+
+
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>

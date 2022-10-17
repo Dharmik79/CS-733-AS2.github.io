@@ -1,6 +1,7 @@
 <html class=" jkfwctcl idc0_343">
 
 <head>
+    <!-- Added vertex shader for webgl -->
     <script id="vertex-shader" type="x-shader/x-vertex">
         #version 300 es
     
@@ -18,7 +19,7 @@
       vColor = aColor;
     }
     </script>
-
+    <!-- Added fragment shader for webgl -->
 
     <script id="fragment-shader" type="x-shader/x-fragment">
         #version 300 es
@@ -34,7 +35,7 @@
         fColor = vColor;
     }
     </script>
-
+    <!-- Added javascript files -->
     <script type="text/javascript" src="../Common/initShaders.js"></script>
     <script type="text/javascript" src="../Common/MVnew.js"></script>
     <script type="text/javascript" src="trackball.js"></script>
@@ -42,24 +43,23 @@
 
     </style>
 </head>
-
+<!-- Added style in the body section -->
 <body id="body" style="background-color: white;" data-new-gr-c-s-check-loaded="14.1083.0" data-gr-ext-installed=""
     cz-shortcut-listen="true">
+    <!-- Checking the browser for running the webgl -->
     <canvas id="gl-canvas" width="1024" height="512">
         Oops ... your browser doesn't support the HTML5 canvas element
     </canvas>
-
     <br>
+    <!-- Added button for all the manipulations of the code -->
     <button id="buttonColor" value="false">Change Color</button>
-
     <button id="rotateX">Rotate X</button>
     <button id="rotateY">Rotate Y</button>
     <button id="rotateZ">Rotate Z</button>
+    <!-- Added slider for changing the rotation of the cube -->
     <div class="slidecontainer">
         <label style="color:black" id="labelColor">Speed : </label>
         <input type="range" min="1" max="10" value="5" class="slider" id="myRange">
     </div>
 </body>
-<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
-
 </html>

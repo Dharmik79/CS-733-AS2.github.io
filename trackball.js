@@ -183,11 +183,11 @@ window.onload = function init() {
     if (changeColor) {
       bgColor = 0;
       body.style.backgroundColor = "black";
-      labelColor.style.color="white"
+      labelColor.style.color = "white";
     } else {
       bgColor = 1;
       body.style.backgroundColor = "white";
-      labelColor.style.color="black"
+      labelColor.style.color = "black";
     }
     colorCube(changeColor);
     initColorChange(gl, canvas, bgColor);
@@ -254,9 +254,8 @@ function render() {
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   if (trackballMove) {
     axis = normalize(axis);
-    if(angle>0.1)
-    {
-      angle=0.1
+    if (angle > 0.1) {
+      angle = 0.1;
     }
     rotationMatrix = mult(rotationMatrix, rotate(angle, axis));
     gl.uniformMatrix4fv(rotationMatrixLoc, true, flatten(rotationMatrix));

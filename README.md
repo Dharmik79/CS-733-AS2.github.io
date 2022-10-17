@@ -7,4 +7,6 @@
 - rotateZ     : Rotate the cube on Z axis
 - Speed       : It will change the speed of the rotation of the cube.
 
+#### Working
+- ![Video]("./Output/working.webm")
 Github : https://github.com/Dharmik79/CS-733-AS2

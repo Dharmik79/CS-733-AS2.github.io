@@ -177,6 +177,22 @@ window.onload = function init() {
     rotateAxis = true;
     rotationMatrix = mat4();
   };
+  // To start the rotation of the cube
+  var playRotate = document.getElementById("playRotate");
+  playRotate.onclick = function () {
+    // Set axis to rotate on X axis
+    axis = vec3(0, 1, 0);
+    rotateAxis = true;
+    angle=JSON.parse(myRange.value) * 0.01
+  
+  };
+  var stopRotate = document.getElementById("stopRotate");
+  stopRotate.onclick = function () {
+    // Set axis to rotate on X axis
+    angle=0
+    axis = vec3(0, 1, 0);
+    rotateAxis = true;
+  };
   var body = document.getElementById("body");
 
   var bgColor = 1;

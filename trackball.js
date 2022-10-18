@@ -162,6 +162,7 @@ window.onload = function init() {
     axis = vec3(1, 0, 0);
     rotateAxis = true;
     rotationMatrix = mat4();
+    angle=JSON.parse(myRange.value) * 0.01
   };
   var rotateY = document.getElementById("rotateY");
   rotateY.onclick = function () {
@@ -169,6 +170,7 @@ window.onload = function init() {
     axis = vec3(0, 1, 0);
     rotateAxis = true;
     rotationMatrix = mat4();
+    angle=JSON.parse(myRange.value) * 0.01
   };
   var rotateZ = document.getElementById("rotateZ");
   rotateZ.onclick = function () {
@@ -176,6 +178,7 @@ window.onload = function init() {
     axis = vec3(0.57735, 0.57735, 0.57735);
     rotateAxis = true;
     rotationMatrix = mat4();
+    angle=JSON.parse(myRange.value) * 0.01
   };
   // To start the rotation of the cube
   var playRotate = document.getElementById("playRotate");
@@ -195,7 +198,7 @@ window.onload = function init() {
   };
   var body = document.getElementById("body");
 
-  var bgColor = 1;
+  var bgColor = 0;
   changeColor = JSON.parse(buttonColor.value);
   gl = canvas.getContext("webgl2");
   if (!gl) {
@@ -209,13 +212,13 @@ window.onload = function init() {
     colors = [];
     // Changing the color according to the current value of the button
     if (changeColor) {
-      bgColor = 0;
-      body.style.backgroundColor = "black";
-      labelColor.style.color = "white";
-    } else {
       bgColor = 1;
       body.style.backgroundColor = "white";
       labelColor.style.color = "black";
+    } else {
+      bgColor = 0;
+      body.style.backgroundColor = "black";
+      labelColor.style.color = "white";
     }
     // creating the colorcube 
     colorCube(changeColor);
@@ -271,7 +274,7 @@ function quad(a, b, c, d, changeColor) {
   for (var i = 0; i < indices.length; ++i) {
     // positions for the next vertices to be pushed
     positions.push(vertices[indices[i]]);
-    if (changeColor) {
+    if (!changeColor) {
       // for interpolated colors use
       colors.push(vertexColors[indices[i]]);
     } else {

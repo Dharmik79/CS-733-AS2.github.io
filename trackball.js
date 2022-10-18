@@ -220,7 +220,7 @@ window.onload = function init() {
       bgColor = 0;
       body.style.backgroundColor = "black";
       labelColor.style.color = "white";
-      heading.innerHTML="😄Trackball😄"
+      heading.innerHTML="🤩Trackball🤩"
     }
     // creating the colorcube
     colorCube(changeColor);

@@ -1,7 +1,8 @@
-.btn{
+.btn {
     margin-left: 100px;
     margin-bottom: 30px;
 }
+
 .button {
     align-items: center;
     background-color: initial;
@@ -75,7 +76,7 @@ input[type=range][orient=vertical] {
     padding: 0 5px;
     position: relative;
     left: 1000px;
-    bottom: 400px;
+    bottom: 470px;
 
 }
 
@@ -84,11 +85,116 @@ input[type=range][orient=vertical] {
 label {
     position: relative;
     left: 1030px;
-    bottom: 600px;
-    font-family: Eina01, sans-serif;
+    bottom: 670px;
+    font-family: sans-serif;
     font-size: 16px;
     font-weight: 800;
-  
+
+}
+
+.play:before {
+    border-radius: 80px;
+    background-image: linear-gradient(92.83deg, #10d913 0, #198a0a 100%);
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.play:after {
+    border-radius: 80px;
+    background-color: initial;
+    background-image: linear-gradient(#0bdc46 0, #0c0d0d 100%);
+    bottom: 4px;
+    content: "";
+    display: block;
+    left: 4px;
+    overflow: hidden;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    transition: all 200ms ease-out;
+    z-index: -1;
+}
+
+.play:hover::before {
+    background: linear-gradient(92.83deg, rgb(4, 215, 1) 0%, rgb(18, 204, 49) 100%);
+}
+
+.play:hover::after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition-timing-function: ease-in;
+    opacity: 0;
+}
+.playC {
+    position: absolute;
+    left: 30px;
+    flex: 1;
+   
+}
+.stop:before {
+    border-radius: 80px;
+    background-image: linear-gradient(92.83deg, #980808 0, #e60719 100%);
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.stop:after {
+    border-radius: 80px;
+    background-color: initial;
+    background-image: linear-gradient(#f50c0c 0, #0c0d0d 100%);
+    bottom: 4px;
+    content: "";
+    display: block;
+    left: 4px;
+    overflow: hidden;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    transition: all 200ms ease-out;
+    z-index: -1;
+}
+
+.stop:hover::before {
+    background: linear-gradient(92.83deg, rgb(170, 17, 12) 0%, rgb(194, 42, 15) 100%);
+}
+
+.stop:hover::after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition-timing-function: ease-in;
+    opacity: 0;
+}
+.stopC {
+    position: relative;
+    left: 1400px;
+    flex: 1;
+}
+
+.btnplay-pause {
+    flex-direction: row;
+    bottom: 570px;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    justify-content: space-between;
 }
 
 .heading {

@@ -6,7 +6,8 @@
 - rotateY     : Rotate the cube on Y axis
 - rotateZ     : Rotate the cube on Z axis
 - Speed       : It will change the speed of the rotation of the cube.
-
+- start       : It will start rotating the cube.
+- stop        : It will stop rotating the cube.
 #### Working
 - [Video](/Output/working.webm)<br><br>
 

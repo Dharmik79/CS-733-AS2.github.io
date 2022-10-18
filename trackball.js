@@ -150,6 +150,7 @@ window.onload = function init() {
   var buttonColor = document.getElementById("buttonColor");
   var labelColor = document.getElementById("labelColor");
   var myRange = document.getElementById("myRange");
+  var heading=document.getElementById("heading");
   // Initial angle to rotate the cube
   angle = JSON.parse(myRange.value) * 0.01;
   // Changing the value of the slider
@@ -162,7 +163,7 @@ window.onload = function init() {
     axis = vec3(1, 0, 0);
     rotateAxis = true;
     rotationMatrix = mat4();
-    angle=JSON.parse(myRange.value) * 0.01
+    angle = JSON.parse(myRange.value) * 0.01;
   };
   var rotateY = document.getElementById("rotateY");
   rotateY.onclick = function () {
@@ -170,7 +171,7 @@ window.onload = function init() {
     axis = vec3(0, 1, 0);
     rotateAxis = true;
     rotationMatrix = mat4();
-    angle=JSON.parse(myRange.value) * 0.01
+    angle = JSON.parse(myRange.value) * 0.01;
   };
   var rotateZ = document.getElementById("rotateZ");
   rotateZ.onclick = function () {
@@ -178,7 +179,7 @@ window.onload = function init() {
     axis = vec3(0.57735, 0.57735, 0.57735);
     rotateAxis = true;
     rotationMatrix = mat4();
-    angle=JSON.parse(myRange.value) * 0.01
+    angle = JSON.parse(myRange.value) * 0.01;
   };
   // To start the rotation of the cube
   var playRotate = document.getElementById("playRotate");
@@ -186,13 +187,12 @@ window.onload = function init() {
     // Set axis to rotate on X axis
     axis = vec3(0, 1, 0);
     rotateAxis = true;
-    angle=JSON.parse(myRange.value) * 0.01
-  
+    angle = JSON.parse(myRange.value) * 0.01;
   };
   var stopRotate = document.getElementById("stopRotate");
   stopRotate.onclick = function () {
     // Set axis to rotate on X axis
-    angle=0
+    angle = 0;
     axis = vec3(0, 1, 0);
     rotateAxis = true;
   };
@@ -215,12 +215,14 @@ window.onload = function init() {
       bgColor = 1;
       body.style.backgroundColor = "white";
       labelColor.style.color = "black";
+      heading.innerHTML="😀Trackball😀"
     } else {
       bgColor = 0;
       body.style.backgroundColor = "black";
       labelColor.style.color = "white";
+      heading.innerHTML="😄Trackball😄"
     }
-    // creating the colorcube 
+    // creating the colorcube
     colorCube(changeColor);
     initColorChange(gl, canvas, bgColor);
   };
@@ -285,7 +287,7 @@ function quad(a, b, c, d, changeColor) {
 }
 
 function render() {
-  // clearing the buffer 
+  // clearing the buffer
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   // Rotation of the cube by mouse movement
   if (trackballMove) {
